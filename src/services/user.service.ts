@@ -9,7 +9,7 @@ export const getUserProfile = async (): Promise<UserProfile> => {
   try {
     const response = await userApi.get('/profile', { headers: getAuthorizedTokenHeader() });
 
-    return response.data.data;
+    return response.data;
   } catch (error) {
     throw new Error(`🚨 Failed to fetch user profile. ${error}`);
   }
@@ -28,8 +28,9 @@ export const getUserById = async (userId: string): Promise<UserProfile> => {
 export const getExploreUsers = async (): Promise<ResponseExploreUser[]> => {
   try {
     const response = await userApi.get('/explore', { headers: getAuthorizedTokenHeader() });
+    console.log(response.data);
 
-    return response.data.data;
+    return response.data;
   } catch (error) {
     throw new Error(`🚨 Failed to fetch explore users. ${error}`);
   }

@@ -1,8 +1,8 @@
 import { signUp } from '@/services';
 import { User } from '@/types';
+import { errorToast, successToast } from '@/util/toast';
 import { Button, Container, Paper, Stack, styled, TextField, Typography } from '@mui/material';
 import { useState } from 'react';
-import { toast } from 'react-toastify';
 
 const DemoPaper = styled(Paper)(({ theme }) => ({
   width: '400px',
@@ -31,8 +31,9 @@ export default function Register() {
       };
 
       await signUp(newUser);
+      successToast(`Success create user.${username}`);
     } catch (error) {
-      console.error(error);
+      errorToast(`${error}`);
     }
   };
 

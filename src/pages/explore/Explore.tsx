@@ -3,17 +3,19 @@ import { getExploreUsers } from '@/services';
 import { ResponseExploreUser } from '@/types/index';
 import { Box, Container, Stack } from '@mui/material';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Explore() {
   const [users, setUsers] = useState<ResponseExploreUser[]>([]);
   const [changed, setChanged] = useState(false);
+  const navigate = useNavigate();
 
   const handleExploreUsers = async () => {
     try {
       const newUsers = await getExploreUsers();
       setUsers(newUsers);
     } catch (error) {
-      console.error(error);
+      navigate('/error');
     }
   };
 

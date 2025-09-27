@@ -2,6 +2,7 @@ import { Button, Paper, Stack, styled, Typography } from '@mui/material';
 
 import { ResponseExploreUser } from '@/types/user';
 import { followUserWithId, unfollowUserWithId } from '@/services';
+import { errorToast, successToast } from '@/util/toast';
 
 const UserDataContainer = styled(Stack)({
   alignItems: 'center',
@@ -20,13 +21,15 @@ export default function UserData({
     try {
       if (userData.isFollowing) {
         await unfollowUserWithId(userData._id);
+        successToast('Success follow user');
         handleBtnClick();
       } else {
         await followUserWithId(userData._id);
+        successToast('Success unfollow user');
         handleBtnClick();
       }
     } catch (error) {
-      console.error(error);
+      errorToast(`${error}`);
     }
   };
 

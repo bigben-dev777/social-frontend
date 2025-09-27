@@ -1,4 +1,4 @@
-export const PAGES = [
+export const PAGESLOGOUT = [
   {
     caption: 'explore',
     url: '/explore'
@@ -22,6 +22,24 @@ export const PAGES = [
   {
     caption: 'register',
     url: '/'
-  },
+  }
 ];
 
+export const PAGESLOGIN = [
+  {
+    caption: 'explore',
+    url: '/explore'
+  },
+  {
+    caption: 'feed',
+    url: '/feed'
+  },
+  {
+    caption: 'create Post',
+    url: '/createPost'
+  },
+  {
+    caption: 'profile',
+    url: '/profile'
+  },
+];

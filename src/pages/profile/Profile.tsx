@@ -5,20 +5,21 @@ import { stringAvatar } from '@/util';
 import { Post, UserProfile } from '@/types';
 import { getUserById, getUserPosts, getUserProfile } from '@/services';
 import useUser from '@/hooks/useUser';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 function Profile() {
   const [profileData, setProfileData] = useState<UserProfile | undefined>(undefined);
   const [posts, setPosts] = useState<Post[]>([]);
   const curUserId = useUser()?._id;
   const { userId } = useParams();
+  const navigate = useNavigate();
 
   const loadProfile = async () => {
     try {
       const newProfileData = userId === undefined ? await getUserProfile() : await getUserById(userId);
       setProfileData(newProfileData);
     } catch (error) {
-      console.error(error);
+      navigate('/error');
     }
   };
 
@@ -28,6 +29,7 @@ function Profile() {
       setPosts(newPosts);
     } catch (error) {
       console.error(error);
+      navigate('/error');
     }
   };
 

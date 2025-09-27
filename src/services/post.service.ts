@@ -9,7 +9,7 @@ export const getUserPosts = async (): Promise<Post[]> => {
   try {
     const response = await postApi.get('/', { headers: getAuthorizedTokenHeader() });
 
-    return response.data.data;
+    return response.data;
   } catch (error) {
     throw new Error(`🚨 Failed to fetch all of my posts ${error}`);
   }
@@ -19,7 +19,7 @@ export const getFeed = async (): Promise<Post[]> => {
   try {
     const response = await postApi.get('/feed', { headers: getAuthorizedTokenHeader() });
 
-    return response.data.data;
+    return response.data;
   } catch (error) {
     throw new Error(`🚨 Failed to fetch feed. ${error}`);
   }
@@ -31,11 +31,11 @@ export const addPost = async (content: string): Promise<void> => {
   } catch (error) {
     throw new Error(`🚨 Failed to add post ${error}`);
   }
-}
+};
 
 export const likePost = async (postId: string): Promise<void> => {
   try {
-    await postApi.post(`/${postId}/like`, { headers: getAuthorizedTokenHeader() });
+    await postApi.post(`/${postId}/like`, {}, { headers: getAuthorizedTokenHeader() });
   } catch (error) {
     throw new Error(`🚨 Failed to like post. ${error}`);
   }
@@ -43,7 +43,7 @@ export const likePost = async (postId: string): Promise<void> => {
 
 export const unlikePost = async (postId: string): Promise<void> => {
   try {
-    await postApi.post(`/${postId}/unlike`, { headers: getAuthorizedTokenHeader() });
+    await postApi.post(`/${postId}/unlike`, {}, { headers: getAuthorizedTokenHeader() });
   } catch (error) {
     throw new Error(`🚨 Failed to unlike post. ${error}`);
   }

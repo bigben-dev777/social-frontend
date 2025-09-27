@@ -1,5 +1,9 @@
-import { PAGES } from '@/constants';
+import { PAGESLOGIN, PAGESLOGOUT } from '@/constants';
+import useLogin from '@/hooks/useLogin';
+import { dispatch, signOut } from '@/store';
+import { setTokenAtLocal } from '@/util';
 import { Box, Container, Stack, styled, Link } from '@mui/material';
+import { Link as RouteLink } from 'react-router-dom';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -12,9 +16,17 @@ const Navbar = styled(Stack)({
 
 export default function Header() {
   const navigate = useNavigate();
+  const isLogin = useLogin();
+
+  const pages = isLogin ? PAGESLOGIN : PAGESLOGOUT;
 
   const handleNavLinkClick = (endpoint: string) => {
     navigate(endpoint);
+  };
+
+  const handleLogOut = () => {
+    dispatch(signOut());
+    setTokenAtLocal('');
   };
 
   return (
@@ -26,7 +38,7 @@ export default function Header() {
     >
       <Container>
         <Navbar>
-          {PAGES.map(page => (
+          {pages.map(page => (
             <Link
               color='textSecondary'
               variant='h5'
@@ -38,6 +50,19 @@ export default function Header() {
               {page.caption}
             </Link>
           ))}
+          {isLogin && (
+            <RouteLink
+              onClick={handleLogOut}
+              to='/login'
+              style={{
+                textDecoration: 'none'
+              }}
+            >
+              <Link component='span' variant='h5' color='textSecondary'>
+                Logout
+              </Link>
+            </RouteLink>
+          )}
         </Navbar>
       </Container>
     </Box>
