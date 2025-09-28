@@ -2,7 +2,6 @@ import { UserProfile, ResponseExploreUser } from '@/types';
 import apiRequest from '@/libs/axios';
 import { API_ENDPOINTS } from '@/configs/endpoints';
 
-
 export const getUserProfile = async (): Promise<UserProfile> => {
   return apiRequest({
     method: 'GET',

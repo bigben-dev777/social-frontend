@@ -2,7 +2,6 @@ import { Post } from '@/types';
 import apiRequest from '@/libs/axios';
 import { API_ENDPOINTS } from '@/configs/endpoints';
 
-
 export const getUserPosts = async (): Promise<Post[]> => {
   // try {
   //   const response = await postApi.get('/', { headers: getAuthorizedTokenHeader() });

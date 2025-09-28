@@ -25,18 +25,18 @@ export default function Login() {
   const navigate = useNavigate();
 
   const handleLoginUser = async () => {
-    try{
+    try {
       const newUser: LoginUserInfo = {
-      email,
-      password
-    };
-    const {user, token} = await logIn(newUser);
+        email,
+        password
+      };
+      const { user, token } = await logIn(newUser);
 
-    dispatch(signIn({user, token}));
-    successToast(`${user.username}!, Login Successed`);
-    navigate('/profile');
-    }catch(error) {
-      errorToast(`${error}`)
+      dispatch(signIn({ user, token }));
+      successToast(`${user.username}!, Login Successed`);
+      navigate('/profile');
+    } catch (error) {
+      errorToast(`${error}`);
     }
   };
 

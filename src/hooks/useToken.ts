@@ -1,7 +1,7 @@
-import { useSelector } from "@/store/index";
+import { useSelector } from '@/store/index';
 
 export default function useToken() {
-    const token = useSelector(store => store.auth.token);
+  const token = useSelector(store => store.auth.token);
 
-    return token
+  return token;
 }
