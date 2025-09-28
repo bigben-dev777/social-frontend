@@ -41,5 +41,5 @@ export const PAGESLOGIN = [
   {
     caption: 'profile',
     url: '/profile'
-  },
+  }
 ];

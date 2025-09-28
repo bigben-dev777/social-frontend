@@ -10,10 +10,10 @@ function CreatePost() {
     try {
       await addPost(content);
       setContent('');
-      successToast('Success to post')
+      successToast('Success to post');
     } catch (error) {
       console.error(error);
-      errorToast('Failed Post')
+      errorToast('Failed Post');
     }
   };
 

@@ -6,7 +6,7 @@ import PostComment from './Comment';
 import { addComment, likePost, unlikePost } from '@/services';
 import { useState } from 'react';
 
-function Article({ postData, handleToggleChanged }: { postData: Post, handleToggleChanged: ()=> void }) {
+function Article({ postData, handleToggleChanged }: { postData: Post; handleToggleChanged: () => void }) {
   const [content, setContent] = useState('');
 
   const handleLikePost = async () => {
