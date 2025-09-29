@@ -1,7 +1,6 @@
 import { PAGESLOGIN, PAGESLOGOUT } from '@/constants';
 import useLogin from '@/hooks/useLogin';
 import { dispatch, signOut } from '@/store';
-import { setTokenAtLocal } from '@/util';
 import { Box, Container, Stack, styled, Link } from '@mui/material';
 import { Link as RouteLink } from 'react-router-dom';
 import React from 'react';
@@ -26,7 +25,6 @@ export default function Header() {
 
   const handleLogOut = () => {
     dispatch(signOut());
-    setTokenAtLocal('');
   };
 
   return (

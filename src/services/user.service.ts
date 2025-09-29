@@ -19,14 +19,6 @@ export const getUserById = async (userId: string): Promise<UserProfile> => {
 };
 
 export const getExploreUsers = async (): Promise<ResponseExploreUser[]> => {
-  // try {
-  //   const response = await userApi.get('/explore', { headers: getAuthorizedTokenHeader() });
-  //   console.log(response.data);
-
-  //   return response.data;
-  // } catch (error) {
-  //   throw new Error(`🚨 Failed to fetch explore users. ${error}`);
-  // }
   return apiRequest({
     method: 'GET',
     url: API_ENDPOINTS.USER.EXPLORE,
@@ -35,11 +27,6 @@ export const getExploreUsers = async (): Promise<ResponseExploreUser[]> => {
 };
 
 export const followUserWithId = async (userId: string): Promise<void> => {
-  // try {
-  //   await userApi.post(`/${userId}/follow`, {}, { headers: getAuthorizedTokenHeader() });
-  // } catch (error) {
-  //   throw new Error(`🚨 Failed to follow user ${error}`);
-  // }
   return apiRequest({
     method: 'POST',
     url: `${API_ENDPOINTS.USER.FOLLOW}/${userId}`,
@@ -48,11 +35,6 @@ export const followUserWithId = async (userId: string): Promise<void> => {
 };
 
 export const unfollowUserWithId = async (userId: string): Promise<void> => {
-  // try {
-  //   await userApi.post(`/${userId}/unfollow`, {}, { headers: getAuthorizedTokenHeader() });
-  // } catch (error) {
-  //   throw new Error(`🚨 Failed to unfollow user ${error}`);
-  // }
   return apiRequest({
     method: 'POST',
     url: `${API_ENDPOINTS.USER.UNFOLLOW}/${userId}`,

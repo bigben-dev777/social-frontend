@@ -3,13 +3,6 @@ import apiRequest from '@/libs/axios';
 import { API_ENDPOINTS } from '@/configs/endpoints';
 
 export const getUserPosts = async (): Promise<Post[]> => {
-  // try {
-  //   const response = await postApi.get('/', { headers: getAuthorizedTokenHeader() });
-
-  //   return response.data;
-  // } catch (error) {
-  //   throw new Error(`🚨 Failed to fetch all of my posts ${error}`);
-  // }
   return apiRequest({
     method: 'GET',
     url: API_ENDPOINTS.POST.GET_USER_POSTS,
@@ -18,13 +11,6 @@ export const getUserPosts = async (): Promise<Post[]> => {
 };
 
 export const getFeed = async (): Promise<Post[]> => {
-  // try {
-  //   const response = await postApi.get('/feed', { headers: getAuthorizedTokenHeader() });
-
-  //   return response.data;
-  // } catch (error) {
-  //   throw new Error(`🚨 Failed to fetch feed. ${error}`);
-  // }
   return apiRequest({
     method: 'GET',
     url: API_ENDPOINTS.POST.GET_FEED,
@@ -42,11 +28,6 @@ export const addPost = async (content: string): Promise<void> => {
 };
 
 export const likePost = async (postId: string): Promise<void> => {
-  // try {
-  //   await postApi.post(`/${postId}/like`, {}, { headers: getAuthorizedTokenHeader() });
-  // } catch (error) {
-  //   throw new Error(`🚨 Failed to like post. ${error}`);
-  // }
   return apiRequest({
     method: 'POST',
     url: `${API_ENDPOINTS.POST.LIKE_POST}/${postId}`,
@@ -55,11 +36,6 @@ export const likePost = async (postId: string): Promise<void> => {
 };
 
 export const unlikePost = async (postId: string): Promise<void> => {
-  // try {
-  //   await postApi.post(`/${postId}/unlike`, {}, { headers: getAuthorizedTokenHeader() });
-  // } catch (error) {
-  //   throw new Error(`🚨 Failed to unlike post. ${error}`);
-  // }
   return apiRequest({
     method: 'POST',
     url: `${API_ENDPOINTS.POST.UNLIKE_POST}/${postId}`,
@@ -68,11 +44,6 @@ export const unlikePost = async (postId: string): Promise<void> => {
 };
 
 export const addComment = async (postId: string, content: string): Promise<void> => {
-  // try {
-  //   await postApi.post(`/${postId}/comment`, { content }, { headers: getAuthorizedTokenHeader() });
-  // } catch (error) {
-  //   throw new Error(`🚨 Failed to comment post. ${error}`);
-  // }
   return apiRequest({
     method: 'POST',
     url: `${API_ENDPOINTS.POST.ADD_COMMENT}/${postId}`,
