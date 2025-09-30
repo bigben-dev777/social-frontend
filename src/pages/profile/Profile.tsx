@@ -1,17 +1,15 @@
 import { useEffect, useState } from 'react';
-import { Avatar, Box, Button, Container, Divider, Stack, Typography } from '@mui/material';
+import { Avatar, Box, Container, Divider, Stack, Typography } from '@mui/material';
 
 import { stringAvatar } from '@/util';
 import { Post, UserProfile } from '@/types';
 import { getUserById, getUserPosts, getUserPostsByUserId, getUserProfile } from '@/services';
-import useUser from '@/hooks/useUser';
 import { useNavigate, useParams } from 'react-router-dom';
 import UserAvatar from '@/components/UserAvatar';
 
 function Profile() {
   const [profileData, setProfileData] = useState<UserProfile | undefined>(undefined);
   const [posts, setPosts] = useState<Post[]>([]);
-  const curUserId = useUser()?._id;
   const { userId } = useParams();
   const navigate = useNavigate();
 
