@@ -21,11 +21,11 @@ export default function UserData({
     try {
       if (userData.isFollowing) {
         await unfollowUserWithId(userData._id);
-        successToast('Success follow user');
+        successToast('Success unfollow user');
         handleBtnClick();
       } else {
         await followUserWithId(userData._id);
-        successToast('Success unfollow user');
+        successToast('Success follow user');
         handleBtnClick();
       }
     } catch (error) {

@@ -1,10 +1,10 @@
-import { Post } from '@/types/post';
-import { stringAvatar } from '@/util';
-import { ThumbUp } from '@mui/icons-material';
-import { Avatar, Button, Divider, IconButton, Paper, Stack, TextField, Typography } from '@mui/material';
-import PostComment from './Comment';
 import { addComment, likePost, unlikePost } from '@/services';
+import { Post } from '@/types/post';
+import { ThumbUp } from '@mui/icons-material';
+import { Button, Divider, IconButton, Paper, Stack, TextField, Typography } from '@mui/material';
 import { useState } from 'react';
+import PostComment from './Comment';
+import UserAvatar from './UserAvatar';
 
 function Article({ postData, handleToggleChanged }: { postData: Post; handleToggleChanged: () => void }) {
   const [content, setContent] = useState('');
@@ -48,7 +48,7 @@ function Article({ postData, handleToggleChanged }: { postData: Post; handleTogg
         my: '2rem'
       }}
     >
-      <Avatar {...stringAvatar(postData.user.username)} />
+      <UserAvatar user={postData.user} size='normal'/>
       <Stack sx={{ width: '100%' }}>
         <Typography
           variant='body1'

@@ -3,9 +3,10 @@ import { Avatar, Box, Button, Container, Divider, Stack, Typography } from '@mui
 
 import { stringAvatar } from '@/util';
 import { Post, UserProfile } from '@/types';
-import { getUserById, getUserPosts, getUserProfile } from '@/services';
+import { getUserById, getUserPosts, getUserPostsByUserId, getUserProfile } from '@/services';
 import useUser from '@/hooks/useUser';
 import { useNavigate, useParams } from 'react-router-dom';
+import UserAvatar from '@/components/UserAvatar';
 
 function Profile() {
   const [profileData, setProfileData] = useState<UserProfile | undefined>(undefined);
@@ -25,7 +26,7 @@ function Profile() {
 
   const loadUserPost = async () => {
     try {
-      const newPosts = await getUserPosts();
+      const newPosts = userId === undefined ? await getUserPosts() : await getUserPostsByUserId(userId);
       setPosts(newPosts);
     } catch (error) {
       console.error(error);
@@ -59,7 +60,19 @@ function Profile() {
               <Typography variant='body1' color='secondary'>
                 {profileData.email}
               </Typography>
-              {curUserId !== userId ? <> </> : <Button>Follow</Button>}
+              {/* {curUserId === userId ? (
+                <> </>
+              ) : (
+                <Button
+                  color='secondary'
+                  sx={{
+                    mt: '1rem',
+                    alignSelf: 'flex-start'
+                  }}
+                >
+                  Follow
+                </Button>
+              )} */}
             </Stack>
             <Stack flex={2}>
               <Stack>
@@ -91,7 +104,7 @@ function Profile() {
                         paddingBlock: '2rem'
                       }}
                     >
-                      <Avatar {...stringAvatar(user.username)} />
+                      <UserAvatar user={user} size='normal' />
                       <Typography variant='body2'>{user.username}</Typography>
                     </Stack>
                   ))}
@@ -125,7 +138,7 @@ function Profile() {
                         paddingBlock: '2rem'
                       }}
                     >
-                      <Avatar {...stringAvatar(user.username)} />
+                      <UserAvatar user={user} size='normal' />
                       <Typography variant='body2'>{user.username}</Typography>
                     </Stack>
                   ))}
