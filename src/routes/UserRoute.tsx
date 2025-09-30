@@ -9,6 +9,10 @@ const UserRoutes = [
   {
     path: '/profile',
     element: <Profile />
+  },
+  {
+    path: '/profile/:userId',
+    element: <Profile />
   }
 ];
 

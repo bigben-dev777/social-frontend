@@ -10,6 +10,14 @@ export const getUserPosts = async (): Promise<Post[]> => {
   });
 };
 
+export const getUserPostsByUserId = async (userId: string): Promise<Post[]> => {
+  return apiRequest({
+    method: 'GET',
+    url: `${API_ENDPOINTS.POST.GET_USER_POSTS}/${userId}`,
+    errorMessage: 'Fail to fetch user posts by user id'
+  });
+};
+
 export const getFeed = async (): Promise<Post[]> => {
   return apiRequest({
     method: 'GET',

@@ -1,6 +1,6 @@
 import { Comment } from '@/types/post';
-import { stringAvatar } from '@/util';
-import { Avatar, Stack, Typography } from '@mui/material';
+import {  Stack, Typography } from '@mui/material';
+import UserAvatar from './UserAvatar';
 
 function PostComment({ commentData }: { commentData: Comment }) {
   return (
@@ -10,7 +10,7 @@ function PostComment({ commentData }: { commentData: Comment }) {
         padding: '1rem .5rem 1rem 0rem'
       }}
     >
-      <Avatar {...stringAvatar(commentData.user.username)} sx={{ width: 32, height: 32 }} />
+      <UserAvatar user={commentData.user} size='small' />
       <Stack
         sx={{
           paddingLeft: '1rem',
