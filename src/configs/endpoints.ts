@@ -1,14 +1,14 @@
 export const API_ENDPOINTS = {
   AUTH: {
-    REGISTER: 'auth/register',
-    LOGIN: 'auth/login'
+    REGISTER: 'auth/signup',
+    LOGIN: 'auth/signin'
   },
   USER: {
-    EXPLORE: 'user/explore',
-    GET_PROFILE: 'user/profile',
-    GET_PROFILE_BY_ID: 'user/profile',
-    FOLLOW: 'user/follow',
-    UNFOLLOW: 'user/unfollow'
+    EXPLORE: 'profile/explore',
+    GET_PROFILE: 'profile/',
+    GET_PROFILE_BY_ID: 'profile/',
+    FOLLOW: 'profile/follow',
+    UNFOLLOW: 'profile/unfollow'
   },
   POST: {
     GET_USER_POSTS: 'post/',

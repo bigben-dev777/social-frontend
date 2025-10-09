@@ -1,12 +1,12 @@
 import Article from '@/components/Article';
 import { getFeed } from '@/services';
-import { Post } from '@/types/post';
+import { IPost } from '@/types/post';
 import { Container } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function Feed() {
-  const [posts, setPosts] = useState<Post[]>([]);
+  const [posts, setPosts] = useState<IPost[]>([]);
   const [changed, setChanged] = useState(false);
   const navigate = useNavigate();
 

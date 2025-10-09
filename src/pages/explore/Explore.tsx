@@ -1,12 +1,12 @@
 import UserData from '@/components/UserData';
 import { getExploreUsers } from '@/services';
-import { ResponseExploreUser } from '@/types/index';
+import { IExploreProfile } from '@/types/index';
 import { Box, Container, Stack } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function Explore() {
-  const [users, setUsers] = useState<ResponseExploreUser[]>([]);
+  const [users, setUsers] = useState<IExploreProfile[]>([]);
   const [changed, setChanged] = useState(false);
   const navigate = useNavigate();
 

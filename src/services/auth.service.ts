@@ -1,8 +1,8 @@
-import { UserProfile, User, LoginUserInfo } from '@/types';
+import { IAuthUser, IProfile, IUser, IUserInput } from '@/types';
 import apiRequest from '@/libs/axios';
 import { API_ENDPOINTS } from '@/configs/endpoints';
 
-export const signUp = async (userData: Omit<User, '_id'>): Promise<UserProfile> => {
+export const signUp = async (userData: Omit<IUser, '_id'>): Promise<IProfile> => {
   return apiRequest({
     method: 'POST',
     url: API_ENDPOINTS.AUTH.REGISTER,
@@ -11,9 +11,7 @@ export const signUp = async (userData: Omit<User, '_id'>): Promise<UserProfile> 
   });
 };
 
-export const logIn = async (
-  userData: LoginUserInfo
-): Promise<{ user: Pick<User, 'username' | 'email' | '_id'>; token: string }> => {
+export const logIn = async (userData: IUserInput): Promise<{ user: IAuthUser; token: string }> => {
   return apiRequest({
     method: 'POST',
     url: API_ENDPOINTS.AUTH.LOGIN,

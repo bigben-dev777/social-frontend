@@ -1,12 +1,12 @@
 import { addComment, likePost, unlikePost } from '@/services';
-import { Post } from '@/types/post';
+import { IPost } from '@/types/post';
 import { ThumbUp } from '@mui/icons-material';
 import { Button, Divider, IconButton, Paper, Stack, TextField, Typography } from '@mui/material';
 import { useState } from 'react';
 import PostComment from './Comment';
 import UserAvatar from './UserAvatar';
 
-function Article({ postData, handleToggleChanged }: { postData: Post; handleToggleChanged: () => void }) {
+function Article({ postData, handleToggleChanged }: { postData: IPost; handleToggleChanged: () => void }) {
   const [content, setContent] = useState('');
 
   const handleLikePost = async () => {
@@ -48,7 +48,7 @@ function Article({ postData, handleToggleChanged }: { postData: Post; handleTogg
         my: '2rem'
       }}
     >
-      <UserAvatar user={postData.user} size='normal'/>
+      <UserAvatar user={postData.user} size='normal' />
       <Stack sx={{ width: '100%' }}>
         <Typography
           variant='body1'

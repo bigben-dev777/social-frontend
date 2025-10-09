@@ -53,7 +53,7 @@ const apiRequest = async <T>(config: ApiRequest): Promise<T> => {
   try {
     const response = await axiosInstance(config);
 
-    return response.data;
+    return response.data.data;
   } catch (error) {
     const message =
       error instanceof AxiosError

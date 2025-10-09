@@ -1,8 +1,8 @@
-import { Post } from '@/types';
+import { IPost } from '@/types';
 import apiRequest from '@/libs/axios';
 import { API_ENDPOINTS } from '@/configs/endpoints';
 
-export const getUserPosts = async (): Promise<Post[]> => {
+export const getUserPosts = async (): Promise<IPost[]> => {
   return apiRequest({
     method: 'GET',
     url: API_ENDPOINTS.POST.GET_USER_POSTS,
@@ -10,7 +10,7 @@ export const getUserPosts = async (): Promise<Post[]> => {
   });
 };
 
-export const getUserPostsByUserId = async (userId: string): Promise<Post[]> => {
+export const getUserPostsByUserId = async (userId: string): Promise<IPost[]> => {
   return apiRequest({
     method: 'GET',
     url: `${API_ENDPOINTS.POST.GET_USER_POSTS}/${userId}`,
@@ -18,7 +18,7 @@ export const getUserPostsByUserId = async (userId: string): Promise<Post[]> => {
   });
 };
 
-export const getFeed = async (): Promise<Post[]> => {
+export const getFeed = async (): Promise<IPost[]> => {
   return apiRequest({
     method: 'GET',
     url: API_ENDPOINTS.POST.GET_FEED,
@@ -37,7 +37,7 @@ export const addPost = async (content: string): Promise<void> => {
 
 export const likePost = async (postId: string): Promise<void> => {
   return apiRequest({
-    method: 'POST',
+    method: 'PUT',
     url: `${API_ENDPOINTS.POST.LIKE_POST}/${postId}`,
     errorMessage: 'Fail to like post'
   });
@@ -45,7 +45,7 @@ export const likePost = async (postId: string): Promise<void> => {
 
 export const unlikePost = async (postId: string): Promise<void> => {
   return apiRequest({
-    method: 'POST',
+    method: 'PUT',
     url: `${API_ENDPOINTS.POST.UNLIKE_POST}/${postId}`,
     errorMessage: 'Fail to unlike post'
   });
@@ -53,7 +53,7 @@ export const unlikePost = async (postId: string): Promise<void> => {
 
 export const addComment = async (postId: string, content: string): Promise<void> => {
   return apiRequest({
-    method: 'POST',
+    method: 'PUT',
     url: `${API_ENDPOINTS.POST.ADD_COMMENT}/${postId}`,
     data: { content },
     errorMessage: 'Fail to comment'

@@ -1,8 +1,8 @@
-import { Comment } from '@/types/post';
+import { IComment } from '@/types/post';
 import {  Stack, Typography } from '@mui/material';
 import UserAvatar from './UserAvatar';
 
-function PostComment({ commentData }: { commentData: Comment }) {
+function PostComment({ commentData }: { commentData: IComment }) {
   return (
     <Stack
       sx={{

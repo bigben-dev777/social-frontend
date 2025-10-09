@@ -1,8 +1,8 @@
-import { UserProfile, ResponseExploreUser } from '@/types';
+import { IExploreProfile, IProfile } from '@/types';
 import apiRequest from '@/libs/axios';
 import { API_ENDPOINTS } from '@/configs/endpoints';
 
-export const getUserProfile = async (): Promise<UserProfile> => {
+export const getUserProfile = async (): Promise<IProfile> => {
   return apiRequest({
     method: 'GET',
     url: API_ENDPOINTS.USER.GET_PROFILE,
@@ -10,7 +10,7 @@ export const getUserProfile = async (): Promise<UserProfile> => {
   });
 };
 
-export const getUserById = async (userId: string): Promise<UserProfile> => {
+export const getUserById = async (userId: string): Promise<IProfile> => {
   return apiRequest({
     method: 'GET',
     url: `${API_ENDPOINTS.USER.GET_PROFILE_BY_ID}/${userId}`,
@@ -18,7 +18,7 @@ export const getUserById = async (userId: string): Promise<UserProfile> => {
   });
 };
 
-export const getExploreUsers = async (): Promise<ResponseExploreUser[]> => {
+export const getExploreUsers = async (): Promise<IExploreProfile[]> => {
   return apiRequest({
     method: 'GET',
     url: API_ENDPOINTS.USER.EXPLORE,
@@ -28,7 +28,7 @@ export const getExploreUsers = async (): Promise<ResponseExploreUser[]> => {
 
 export const followUserWithId = async (userId: string): Promise<void> => {
   return apiRequest({
-    method: 'POST',
+    method: 'PUT',
     url: `${API_ENDPOINTS.USER.FOLLOW}/${userId}`,
     errorMessage: 'Fail to follow user'
   });
@@ -36,7 +36,7 @@ export const followUserWithId = async (userId: string): Promise<void> => {
 
 export const unfollowUserWithId = async (userId: string): Promise<void> => {
   return apiRequest({
-    method: 'POST',
+    method: 'PUT',
     url: `${API_ENDPOINTS.USER.UNFOLLOW}/${userId}`,
     errorMessage: 'Fail to follow user'
   });

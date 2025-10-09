@@ -2,14 +2,14 @@ import { useEffect, useState } from 'react';
 import { Avatar, Box, Container, Divider, Stack, Typography } from '@mui/material';
 
 import { stringAvatar } from '@/util';
-import { Post, UserProfile } from '@/types';
 import { getUserById, getUserPosts, getUserPostsByUserId, getUserProfile } from '@/services';
 import { useNavigate, useParams } from 'react-router-dom';
 import UserAvatar from '@/components/UserAvatar';
+import { IPost, IProfile } from '@/types';
 
 function Profile() {
-  const [profileData, setProfileData] = useState<UserProfile | undefined>(undefined);
-  const [posts, setPosts] = useState<Post[]>([]);
+  const [profileData, setProfileData] = useState<IProfile | undefined>(undefined);
+  const [posts, setPosts] = useState<IPost[]>([]);
   const { userId } = useParams();
   const navigate = useNavigate();
 
@@ -46,7 +46,7 @@ function Profile() {
           <Stack direction='row'>
             <Stack flex={1} sx={{}}>
               <Avatar
-                {...stringAvatar(profileData.username)}
+                {...stringAvatar(profileData.user.name)}
                 sx={{
                   width: '300px',
                   height: '300px',
@@ -54,23 +54,10 @@ function Profile() {
                   fontSize: '10rem'
                 }}
               />
-              <Typography variant='h4'>{profileData.username}</Typography>
+              <Typography variant='h4'>{profileData.user.name}</Typography>
               <Typography variant='body1' color='secondary'>
-                {profileData.email}
+                {profileData.user.email}
               </Typography>
-              {/* {curUserId === userId ? (
-                <> </>
-              ) : (
-                <Button
-                  color='secondary'
-                  sx={{
-                    mt: '1rem',
-                    alignSelf: 'flex-start'
-                  }}
-                >
-                  Follow
-                </Button>
-              )} */}
             </Stack>
             <Stack flex={2}>
               <Stack>
@@ -103,7 +90,7 @@ function Profile() {
                       }}
                     >
                       <UserAvatar user={user} size='normal' />
-                      <Typography variant='body2'>{user.username}</Typography>
+                      <Typography variant='body2'>{user.name}</Typography>
                     </Stack>
                   ))}
                 </Stack>
@@ -137,7 +124,7 @@ function Profile() {
                       }}
                     >
                       <UserAvatar user={user} size='normal' />
-                      <Typography variant='body2'>{user.username}</Typography>
+                      <Typography variant='body2'>{user.name}</Typography>
                     </Stack>
                   ))}
                 </Stack>
