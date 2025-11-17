@@ -1,7 +1,7 @@
 export function stringAvatar(name: string) {
   return {
     sx: {
-      backgroundColor: '#141414'
+      backgroundColor: '#141413'
     },
     children: `${name[0]}`
   };
